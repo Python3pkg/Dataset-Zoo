@@ -1,14 +1,14 @@
-from utils.download_utils import download_file
-from utils.download_utils import file_exists
-from utils.download_utils import save_dataset
+from .utils.download_utils import download_file
+from .utils.download_utils import file_exists
+from .utils.download_utils import save_dataset
 
-from utils.upload_utils import verify_type
-from utils.upload_utils import verify_information
-from utils.upload_utils import already_exists
+from .utils.upload_utils import verify_type
+from .utils.upload_utils import verify_information
+from .utils.upload_utils import already_exists
 
 import h5py
 import os
-import urllib2
+import urllib.request, urllib.error, urllib.parse
 
 """
 Finish up 1/2 pip functions
@@ -93,7 +93,7 @@ def load_dataset(dataset_name):
 
 def list_datasets():
     base = "http://"
-    data = urllib2.urlopen(base)
+    data = urllib.request.urlopen(base)
     for line in data:
         print(line)
     # Shouldn't have any access errors just because we're reading
